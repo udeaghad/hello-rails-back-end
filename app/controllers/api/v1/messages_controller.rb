@@ -1,7 +1,7 @@
 module Api
   module V1 
     class MessagesController < ApplicationController 
-      def def index
+      def index
         @messages = Message.all
 
         render json: MessageSerializer.new(@messages).serialized_json
