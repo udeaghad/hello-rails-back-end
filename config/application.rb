@@ -8,8 +8,17 @@ Bundler.require(*Rails.groups)
 
 module HelloRailsBackEnd
   class Application < Rails::Application
+    # config.api_only = true
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
+    Rails.application.config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*',
+          headers: '*',
+          methods: [:get]
+      end
+    end
 
     # Configuration for the application, engines, and railties goes here.
     #
